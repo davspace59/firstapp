@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, StyleSheet} from "react-native";
 
-export default function App() {
-  return (
+export default function App(){
+  return(
     <View style={styles.container}>
-      <Text> amole bingo </Text>
-      <StatusBar style="auto" />
+      <Text>amole bingo </Text>
     </View>
-  );
+  )
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  container:{
+    flex: 1, 
+    backgroundColor: '#3c0a75'
+  }
+})
