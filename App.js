@@ -3,23 +3,59 @@ import { View, Text, StyleSheet,TouchableOpacity} from "react-native";
 import { TextInput} from "react-native-paper";
 
 export default function App(){
-  return(
+
+  const [addTask , setAddTask,] = useState(false);
+  const [task, setTask ] = useState("");
+
+  const handleBack =() =>{
+    setAddTask(prev=>!prev);
+  }
+  const handleTextChange = () =>{
+    setTask(task);
+    setTask("")
+  }
+  
+
+  if(addTask)
+    {
+ 
+  {return(
+    <foucusTime></foucusTime>
+
+  )
+
+  }
+
+
+
+
+
+
+    return(
     <SafeAreaView style={styles.container}>
        <View style={styles.inputContainer}>
         <TextInput
         placeholder ="what would you like to focus ..."
         mode ={"outlined"}
-        label= "focus"
+        label = "focus"
         style = {styles.inputText }
+        value = {task}
+        onChangeText ={handleTextChange}
         />
         <TouchableOpacity style={styles.fabButton} onPress={() => {}}>
-          <Text style={styles.fabText}>+</Text>
+          <Text style={styles.fabText}>
+            +
+          </Text>
         </TouchableOpacity>
        </View>
 
       <View style={styles.focusedTasks}>
        <Text style={styles.focusTitle}>Things we've focused on:</Text>
       </View>
+      <Text style={{ fontSize: 18 , color:'#fff' , fontWeight: '600'}}>
+         2,Learn  js basics 
+      </Text>
+            
     </SafeAreaView>
   )
 }
