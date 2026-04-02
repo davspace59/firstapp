@@ -1,63 +1,54 @@
-import { View, Text, StyleSheet,TouchableOpacity} from "react-native";
- import { SafeAreaView } from "react-native-safe-area-context";
-import { TextInput} from "react-native-paper";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { TextInput } from "react-native-paper";
+import FocusTime from './components/FocusTime';
 
-export default function App(){
+export default function App() {
 
-  const [addTask , setAddTask,] = useState(false);
-  const [task, setTask ] = useState("");
+  const [addTask, setAddTask] = useState(false);
+  const [task, setTask] = useState("");
 
-  const handleBack =() =>{
-    setAddTask(prev=>!prev);
-  }
-  const handleTextChange = () =>{
-    setTask(task);
-    setTask("")
-  }
-  
+  const handleBack = () => {
+    setAddTask(prev => !prev);
+  };
+  const handleTextChange = (text) => {
+    setTask(text);
+  };
 
-  if(addTask)
-    {
- 
-  {return(
-    <foucusTime></foucusTime>
-
-  )
-
+  if (addTask) {
+    return <FocusTime onBack={handleBack} />;
   }
 
-
-
-
-
-
-    return(
+  return (
     <SafeAreaView style={styles.container}>
-       <View style={styles.inputContainer}>
+      <View style={styles.inputContainer}>
         <TextInput
-        placeholder ="what would you like to focus ..."
-        mode ={"outlined"}
-        label = "focus"
-        style = {styles.inputText }
-        value = {task}
-        onChangeText ={handleTextChange}
+          placeholder="what would you like to focus ..."
+          mode="outlined"
+          label="focus"
+          style={styles.inputText}
+          value={task}
+          onChangeText={handleTextChange}
         />
-        <TouchableOpacity style={styles.fabButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.fabButton} onPress={() => setAddTask(true)}>
           <Text style={styles.fabText}>
             +
           </Text>
         </TouchableOpacity>
-       </View>
+      </View>
 
       <View style={styles.focusedTasks}>
-       <Text style={styles.focusTitle}>Things we've focused on:</Text>
+        <Text style={styles.focusTitle}>Things we've focused on:</Text>
+
+        {/* <View style={{ flex: 1, color: '#fff'}}> */}
+          <Text style={{ fontSize: 18, color: '#fff', fontWeight: 'bold' }}> 1, Learn react native</Text>  
+          <Text style={{ fontSize: 18, color: '#fff', fontWeight: 'bold' }}> 2, Learn js basics</Text>
       </View>
-      <Text style={{ fontSize: 18 , color:'#fff' , fontWeight: '600'}}>
-         2,Learn  js basics 
-      </Text>
-            
+       
+
     </SafeAreaView>
-  )
+  );
 }
 const styles = StyleSheet.create({
   container: {
